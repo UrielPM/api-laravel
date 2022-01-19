@@ -25,6 +25,7 @@ class PostSeeder extends Seeder
                 rand(1, 4),
                 rand(5, 8)
             ]);
+          
         });
     }
 }

@@ -18,13 +18,14 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
+
         Storage::deleteDirectory('posts');
         Storage::makeDirectory('posts');
 
         $this->call(UserSeeder::class);
 
         Category::factory(4)->create();
-        Tag::factory(3)->create();
+        Tag::factory(8)->create();
         
         $this->call(PostSeeder::class);
 

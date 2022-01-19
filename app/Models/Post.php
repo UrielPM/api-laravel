@@ -10,7 +10,7 @@ class Post extends Model
     use HasFactory;
 
     const BORRADOR = 1;
-    const PUBLICADO =2;
+    const PUBLICADO = 2;
 
       //Relacion uno a muchos inversa
     public function user(){
