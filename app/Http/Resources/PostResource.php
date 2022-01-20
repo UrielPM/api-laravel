@@ -3,9 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
-use App\Http\Resources\PostResource;
 
-class CategoryResource extends JsonResource
+class PostResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -15,11 +14,15 @@ class CategoryResource extends JsonResource
      */
     public function toArray($request)
     {
-        return[
+        return [
             'id' => $this->id,
             'name' => $this->name,
             'slug' => $this->slug,
-            'posts' => PostResource::collection($this->whenLoaded('posts'))
+            'extract' => $this->extract,
+            'body' => $this->body,
+            'status' => $this->status == 1? 'BORRADOR' : 'PUBLICADO',
+            'user' => UserResource::make($this->whenLoaded('user')),
+            'category' => CategoryResource::make($this->whenLoaded('category'))
         ];
     }
 }

@@ -21,7 +21,8 @@ class CategoryController extends Controller
                         ->filter()
                         ->sort()
                         ->getOrPaginate();
-            return $categories;
+                        
+            return CategoryResource::collection($categories);
     }
 
     /**
@@ -38,7 +39,8 @@ class CategoryController extends Controller
          ]);
 
          $category = Category::create($request->all());
-         return $category;
+
+         return CategoryResource::make($category);
     }
 
     /**
@@ -51,7 +53,7 @@ class CategoryController extends Controller
     {
         $category = Category::included()->findOrFail($id);
 
-        return new CategoryResource($category);
+        return  CategoryResource::make($category);
     }
 
     /**
